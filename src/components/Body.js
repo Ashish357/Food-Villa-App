@@ -12,11 +12,13 @@ import ShimmerCursor from './ShimmerCursor';
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
+  const [Loading, setLoading] = useState(false);
   const [page, setPage] = useState(10)
   const { carousel, allRestaurants, filteredRestaurants, setFilteredRestaurants, setAllRestaurants, restaurantCarousel, itemCarousel } = useRestaurantData();
   // console.log(allRestaurants);
 
   async function getRestaurantMore() {
+    setLoading(true);
     try {
       const response = await fetch(
         'https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/update',
@@ -57,6 +59,8 @@ const Body = () => {
       }
     } catch (error) {
       console.error('Error fetching restaurants:', error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -186,6 +190,7 @@ const Body = () => {
             })}
           </div>
         </div>
+  {Loading && <Shimmer/>}
       </>
     );
 };
