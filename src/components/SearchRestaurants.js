@@ -29,7 +29,7 @@ const SearchRestaurants = () => {
     }, [])
 
     const getSearchItemFoods = async () => {
-        const data = await fetch('https://corsproxy.io/?https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9715987&lng=77.5945627');
+        const data = await fetch('https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9715987&lng=77.5945627');
         const json = await data.json();
         // console.log(json?.data?.cards[1]?.card?.card?.imageGridCards?.info);
         setFood(json?.data?.cards[1]?.card?.card?.imageGridCards?.info)
@@ -50,7 +50,7 @@ const SearchRestaurants = () => {
     }, [searchText])
 
     const getSearchSuggestions = async () => {
-        const data = await fetch(`https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/search/suggest?lat=12.9715987&lng=77.5945627&str=${searchText}&trackingId=undefined`);
+        const data = await fetch(`https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/search/suggest?lat=12.9715987&lng=77.5945627&str=${searchText}&trackingId=undefined`);
 
         const json = await data.json();
         // console.log(json?.data?.suggestions)
@@ -65,7 +65,7 @@ const SearchRestaurants = () => {
     }, [searchName])
 
     const getSearchByRes = async () => {
-        const data = await fetch(`https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=${searchName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=bc9bbc65-5d8b-0aa5-bbdc-65b467e6afdb`)
+        const data = await fetch(`https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9715987&lng=77.5945627&str=${searchName}&trackingId=undefined&submitAction=SUGGESTION&queryUniqueId=bc9bbc65-5d8b-0aa5-bbdc-65b467e6afdb`)
         const json = await data.json();
         // let item = json?.data?.cards[1]?.groupedCard?.cardGroupMap
         // console.log(isDish)

@@ -21,7 +21,7 @@ const Body = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        'https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/update',
+        'https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/update',
         {
           method: 'POST', // Use POST for fetching more restaurants
           headers: {

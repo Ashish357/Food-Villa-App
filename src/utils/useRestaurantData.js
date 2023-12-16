@@ -17,7 +17,7 @@ const useRestaurantData = () => {
     async function getRestaurants() {
       const data = await fetch(Resturant_Data_URL);
       const json = await data.json();
-      // console.log(json)
+      console.log(json)
       if(window.innerWidth<1024) {
         setCarousel(FOOD_CAROUSEL?.imageGridCards)
         setAllRestaurants(RESTAURANT_DATA?.restaurants)
