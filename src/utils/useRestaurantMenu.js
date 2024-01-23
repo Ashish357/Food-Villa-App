@@ -22,10 +22,10 @@ const useRestaurantMenu = (resId) => {
         else{
              data = await fetch(FETCH_MENU_URL_MOBILE);
              json = await data.json();
-             menuData = json?.data?.cards[3].groupedCard?.cardGroupMap?.REGULAR?.cards
+             menuData = json?.data?.cards[5].groupedCard?.cardGroupMap?.REGULAR?.cards
             }
         // console.log(json.data)
-        const info = json?.data?.cards[0].card?.card.info;
+        const info = json?.data?.cards[0].card?.card.info || json?.data?.cards[2].card?.card.info;
         const menu =  menuData
         setRestaurantInfo(info)
         setRestaurantMenu(menu)
