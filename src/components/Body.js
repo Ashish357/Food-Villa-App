@@ -16,40 +16,38 @@ const Body = () => {
   const [Loading, setLoading] = useState(false);
   const { carousel, allRestaurants, filteredRestaurants, setFilteredRestaurants, setAllRestaurants, restaurantCarousel, itemCarousel } = useRestaurantData();
   // console.log(allRestaurants);
+  // console.log(itemCarousel);
 
   async function getRestaurantMore() {
     setLoading(true);
     try {
-      const response = await fetch(
-        'https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/update',
-        {
-          method: 'POST', // Use POST for fetching more restaurants
-          headers: {
-            'Content-Type': 'application/json',
-            // Add any additional headers here
-          },
-          body: JSON.stringify({
-            lat: 12.9715987,
-            lng: 77.5945627,
-            nextOffset: 'COVCELQ4KID4ruup+9+KczCnEzgD', // Use the correct nextOffset value
-            // Other payload parameters if needed
-            seoParams: {
-              apiName: "FoodHomePage",
-              pageType: "FOOD_HOMEPAGE",
-              seoUrl: "https://www.swiggy.com/",
-            },
-            widgetOffset: {
-              // Include your widgetOffset values here
-              NewListingView_Topical_Fullbleed: '',
-              NewListingView_category_bar_chicletranking_TwoRows: '',
-              NewListingView_category_bar_chicletranking_TwoRows_Rendition: "",
-              collectionV5RestaurantListWidget_SimRestoRelevance_food_seo: String(page),
-            },
-          }),
-        }
-      );
-      const data = await response.json();
-      //    console.log(data.data.cards[0].card.card.gridElements.infoWithStyle.restaurants);
+      const response = await fetch('https://www.swiggy.com/dapi/restaurants/list/update', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    // Include any additional headers here
+  },
+  body: JSON.stringify({
+    lat: 12.9715987,
+    lng: 77.5945627,
+    nextOffset: 'COVCELQ4KICYjZK9t5jcWDCnEzgC',
+    seoParams: {
+      apiName: 'FoodHomePage',
+      pageType: 'FOOD_HOMEPAGE',
+      seoUrl: 'https://www.swiggy.com/',
+    },
+    widgetOffset: {
+      NewListingView_Topical_Fullbleed: '',
+      NewListingView_category_bar_chicletranking_TwoRows: '',
+      NewListingView_category_bar_chicletranking_TwoRows_Rendition: '',
+      collectionV5RestaurantListWidget_SimRestoRelevance_food_seo: String(page),
+    },
+    _csrf: 'Wa4479CuNAHS-24Ynwws3k2hSsD6G6fhPXyFTBaM',
+  }),
+});
+
+const data = await response.json();
+console.log(data);
       if (allRestaurants) {
 
         let newRestaurants = data.data.cards[0].card.card.gridElements.infoWithStyle.restaurants;
@@ -149,12 +147,12 @@ const Body = () => {
      </div> 
      */}
 
-        <div className='mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4'>
-          {/* className=" bg-[#171a29]" */}
+        {/* <div className='mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4'>
+          className=" bg-[#171a29]"
           {
             carousel && <FoodCarousel data={carousel} />
           }
-        </div>
+        </div> */}
 
         <div className='mx-8 sm:mx-14 md:mx-24 lg:mx-44 pb-4'>
           <ItemCarousel data={itemCarousel} />
@@ -184,6 +182,7 @@ const Body = () => {
                   key={restaurant.info.id}
                   className='pr-4'
                 >
+                  {/* {restaurant.info.id} */}
                   <RestaurantCard {...restaurant.info} />
                 </Link>
               );

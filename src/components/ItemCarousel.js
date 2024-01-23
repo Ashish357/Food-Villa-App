@@ -24,6 +24,7 @@ const ItemCarousel = (items) => {
           items: 2
         }
       };
+     
   return (
     <>
     <h2 className='font-bold text-2xl my-4'>Hey, what's on your mind?</h2>
