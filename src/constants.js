@@ -9,7 +9,7 @@ export const FETCH_MENU_URL =
 //https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=43836
 
 export const FETCH_MENU_URL_MOBILE =
-"https://corsproxy.org/?https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&submitAction=ENTER&restaurantId=352792";
+"https://corsproxy.org/?"+encodeURIComponent("https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&submitAction=ENTER&restaurantId=352792");
 
 /* Mock FAQ */
 export const FAQ = [
