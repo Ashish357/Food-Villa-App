@@ -33,7 +33,7 @@ const SearchRestaurants = () => {
         // https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=12.9715987&lng=77.5945627
         const json = await data.json();
         // console.log(json?.data?.cards[1]?.card?.card?.imageGridCards?.info);
-        setFood(json?.data?.cards[1]?.card?.card?.imageGridCards?.info)
+        setFood(json?.data?.cards[1]?.card?.card?.imageGridCards?.info) 
     }
 
     useEffect(() => {
